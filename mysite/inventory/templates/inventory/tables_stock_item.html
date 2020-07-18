@@ -1,0 +1,54 @@
+{% extends 'inventory/base.html' %}
+
+{% block content %}
+
+    <div class="buttion_place">
+        <a href="" class="btn btn-primary btn-lg active" role="button" aria-pressed="true"> + Add Product</a>
+    </div>
+
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th> Name</th>
+            <th>Keywords</th>
+            <th>Location</th>
+            <th>Producer</th>
+            <th>Product_series</th>
+            <th>Manufacturer_index</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for item in items %}
+
+            <tr>
+                <th>
+                    <a href="">
+                        {{ item.pk }}
+                    </a>
+                </th>
+                <td>{{ item.name }}</td>
+                <td>{{ item.keywords }}</td>
+                <td>{{ item.default_location }}</td>
+                <td>{{ item.producer }}</td>
+                <td>{{ item.product_series }}</td>
+                <td>{{ item.manufacturer_index }}</td>
+                <td>
+                    <button class="btn btn-danger" id="btn-delete" data-url="#" data-toggle="modal"
+                                data-target="#removeCategoryModal">
+                        <span class="glyphicon glyphicon-trash"></span>
+                        Delete
+                    </button>
+                    <button class="btn btn-info show-form-delete" id="btn-update" data-url="#">
+                        <span class="glyphicon glyphicon-trash"></span>
+                        Edit
+                    </bu
+                </td>
+            </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+
+{% endblock %}
+
