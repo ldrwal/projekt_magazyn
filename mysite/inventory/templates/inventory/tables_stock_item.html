@@ -3,23 +3,22 @@
 {% block content %}
 
     <div class="buttion_place">
-        <a href="" class="btn btn-primary btn-lg active" role="button" aria-pressed="true"> + Add Product</a>
+        <a href="" class="btn btn-primary btn-lg active" role="button" aria-pressed="true"> + Add Stock Item</a>
     </div>
 
     <table class="table table-hover">
         <thead>
         <tr>
             <th>#</th>
-            <th> Name</th>
-            <th>Keywords</th>
+            <th>Part</th>
+            <th>Project</th>
             <th>Location</th>
-            <th>Producer</th>
-            <th>Product_series</th>
-            <th>Manufacturer_index</th>
+            <th>Quantity</th>
+            <th>Updated</th>
         </tr>
         </thead>
         <tbody>
-        {% for item in items %}
+        {% for item in stock_items %}
 
             <tr>
                 <th>
@@ -27,12 +26,11 @@
                         {{ item.pk }}
                     </a>
                 </th>
-                <td>{{ item.name }}</td>
-                <td>{{ item.keywords }}</td>
-                <td>{{ item.default_location }}</td>
-                <td>{{ item.producer }}</td>
-                <td>{{ item.product_series }}</td>
-                <td>{{ item.manufacturer_index }}</td>
+                <td>{{ item.part }}</td>
+                <td>{{ item.project }}</td>
+                <td>{{ item.location }}</td>
+                <td>{{ item.quantity }}</td>
+                <td>{{ item.updated }}</td>
                 <td>
                     <button class="btn btn-danger" id="btn-delete" data-url="#" data-toggle="modal"
                                 data-target="#removeCategoryModal">
