@@ -1,0 +1,18 @@
+{% extends 'inventory/base.html' %}
+{% block content %}
+
+
+    <h1>Item Information</h1>
+
+        <div class="buttion_place">
+            <a href="" class="btn btn-primary btn-lg active" role="button" aria-pressed="true"> + Edit Product</a>
+        </div>
+
+       <label><h5>Name</h5></label>:  {{ item.name }} <br>
+       <label><h5>Keywords</h5></label>: {{ item.keywords }}<br>
+       <label><h5>Default location</h5></label>: {{ item.default_location }}<br>
+       <label><h5>Produce</h5></label>: {{ item.producer }}<br>
+       <label><h5>Product series</h5>: {{ item.product_series }}</label>
+        <label><h5>Manufacturer index </h5>: {{ item.manufacturer_index }}</label>
+
+{% endblock %}
