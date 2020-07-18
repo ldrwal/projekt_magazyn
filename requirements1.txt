@@ -1,0 +1,25 @@
+# Use pip install -r example-requirements.txt to install:
+#
+####### example-requirements.txt #######
+#
+###### Requirements without Version Specifiers ######
+
+#
+###### Requirements with Version Specifiers ######
+#   See https://www.python.org/dev/peps/pep-0440/#version-specifiers
+#markdown == 3.0             # Version Matching. Must be version 0.6.1
+Django == 3.0.8
+
+
+#
+###### Refer to other requirements files ######
+# -r requirements_2.txt
+#
+#
+###### A particular file ######
+
+#
+###### Additional Requirements without Version Specifiers ######
+#   Same as 1st section, just here to show that you can put things in any order.
+
+#
