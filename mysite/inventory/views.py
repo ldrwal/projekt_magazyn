@@ -87,3 +87,10 @@ def item_list(request):
     item_lists = Item.objects.all()
     context = {'items': item_lists}
     return render(request, "inventory/tables_item.html", context)
+
+
+@csrf_exempt
+def stock_item_list(request):
+    stock_item_lists = StockItem.objects.all()
+    context = {'stock_items': stock_item_lists}
+    return render(request, "inventory/tables_stock_item.html", context)
