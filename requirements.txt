@@ -18,6 +18,7 @@ Django == 3.0.8
 #
 ###### A particular file ######
 
+
 #
 ###### Additional Requirements without Version Specifiers ######
 #   Same as 1st section, just here to show that you can put things in any order.
