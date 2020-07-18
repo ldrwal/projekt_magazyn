@@ -1,0 +1,43 @@
+{% extends 'inventory/base.html' %}
+
+{% block content %}
+
+    <div class="buttion_place">
+        <a href="" class="btn btn-primary btn-lg active" role="button" aria-pressed="true"> + Add Product</a>
+    </div>
+
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th> Name</th>
+            <th>Keywords</th>
+            <th>Location</th>
+            <th>Producer</th>
+            <th>Product_series</th>
+            <th>Manufacturer_index</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for product in items %}
+
+            <tr>
+                <th>
+                    <a href="">
+                        {{ product.pk }}
+                    </a>
+                </th>
+                <td>{{ product.name }}</td>
+                <td>{{ product.keywords }}</td>
+                <td>{{ product.default_location }}</td>
+                <td>{{ product.producer }}</td>
+                <td>{{ product.product_series }}</td>
+                <td>{{ product.manufacturer_index }}</td>
+            </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+
+{% endblock %}
+
