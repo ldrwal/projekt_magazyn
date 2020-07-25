@@ -82,11 +82,7 @@ def create_item(request):
     return JsonResponse(data)
 
 
-@csrf_exempt
-def item_list(request):
-    item_lists = Item.objects.all()
-    context = {'items': item_lists}
-    return render(request, "inventory/tables_item.html", context)
+
 
 
 @csrf_exempt
@@ -94,3 +90,27 @@ def stock_item_list(request):
     stock_item_lists = StockItem.objects.all()
     context = {'stock_items': stock_item_lists}
     return render(request, "inventory/tables_stock_item.html", context)
+
+
+@csrf_exempt
+def create_item(request):
+    data = dict()
+    name = request.POST.get("itemName")
+    description = request.POST.get("itemStatus")
+    Item.objects.create(name=name, description=description)
+    items_list = Item.objects.all()
+    data['html'] = render_to_string('modules/tables.html', {"items": items_list})
+    return JsonResponse(data)
+
+
+@csrf_exempt
+def item_list(request):
+    items_list = Item.objects.all()
+    html = render_to_string('inventory/tables_item.html', {"items": items_list})
+    return JsonResponse({"message": "Ok", "html": html})
+
+
+@csrf_exempt
+@login_required(login_url="/account/signin/")
+def items(request):
+    return render(request, "item.html", {})

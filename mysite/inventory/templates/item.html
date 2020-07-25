@@ -1,0 +1,105 @@
+{% extends 'inventory/base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="container">
+        <div class="row vertical">
+            <div class="col-md-12 center-block">
+                <div class="breadcrumb">
+                    <p><a href="{% url 'index' %}">Home</a> / Items </p>
+                </div>
+                <div class="card card-outline-secondary">
+                    <div class="card-header">
+                        <h3 class="mb-0 text-center">Manage Item</h3>
+                    </div>
+                    <div class="card-block">
+                        <button class="btn btn-default float-right" style="margin-bottom: 20px" data-toggle="modal"
+                                data-target="#addItemModal" id="btn-add" data-url="{% url 'create-item' %}">
+                            <i class="fa fa-plus"
+                               aria-hidden="true"></i>
+                            Add Item
+                        </button>
+                        <div id="data_table" data-url="{% url 'item-list' %}">
+
+                        </div>
+                    </div>
+                    <!--/card-block-->
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" tabindex="-1" role="dialog" id="addItemModal">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">Add Item</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form create-form" autocomplete="off" method="post"
+                              data-url="{% url 'create-item' %}">
+                            <div class="form-group">
+                                <label for="itemName">Name</label>
+                                <input type="text" class="form-control" name="itemName" id="itemName" required=""
+                                       autocomplete="off">
+                            </div>
+                            <div class="form-group">
+                                <label for="itemStatus">Status</label>
+                                <select class="form-control" name="itemStatus" id="itemStatus">
+                                    <option value="">SELECT</option>
+                                    <option value="1">Available</option>
+                                    <option value="2">Not Available</option>
+                                </select>
+                            </div>
+                            {% csrf_token %}
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary" id="createItemBtn"
+                                        data-loading-text="loading...">Save changes
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+
+        <div class="modal fade" tabindex="-1" role="dialog" id="editItemModal">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="submit" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">Edit Item</h4>
+                    </div>
+                    <div class="modal-body">
+
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+
+        <div class="modal fade" tabindex="-1" role="dialog" id="removeItemModal">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="submit" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">Remove Item</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Do you want to really delete?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+                        <button type="submit" class="btn btn-danger" id="btn-yes-delete">Yes</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
+    </div>
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'js/item.js' %}"></script>
+{% endblock %}
